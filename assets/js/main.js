@@ -122,6 +122,7 @@
 })();
 
 
+
 /* ── Challenge unlock ── */
 (function initChallenge() {
   const form = document.getElementById('challenge-form');
@@ -142,47 +143,9 @@
       const json = await res.json();
 
       if (json.ok) {
-        const lockedWrapper = document.getElementById('locked-wrapper');
-        const rsvpSection = document.getElementById('rsvp');
-        const parent = rsvpSection.parentNode;
-
-        // Parse returned HTML
-        const temp = document.createElement('div');
-        temp.innerHTML = json.html;
-
-        // Insert real sections before RSVP, remove locked wrapper
-        while (temp.firstElementChild) {
-          parent.insertBefore(temp.firstElementChild, rsvpSection);
-        }
-        if (lockedWrapper) lockedWrapper.remove();
-
-        // Re-apply translations for new content
-        if (typeof applyTranslations === 'function') {
-          applyTranslations(currentLang);
-        }
-
-        // Re-init fade-in for new elements
-        const newTargets = document.querySelectorAll(
-          '.timeline-item:not(.fade-in), .location-card:not(.fade-in)'
-        );
-        const fadeObserver = new IntersectionObserver(entries => {
-          entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => entry.target.classList.add('visible'), i * 60);
-              fadeObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12 });
-        newTargets.forEach(el => {
-          el.classList.add('fade-in');
-          fadeObserver.observe(el);
-        });
-
-        // Scroll to the schedule section
-        const newSchedule = document.getElementById('schedule');
-        if (newSchedule) {
-          newSchedule.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // Session is set — reload to render everything unlocked (sections + contacts)
+        window.location.hash = '#schedule';
+        window.location.reload();
       } else {
         errorEl.style.display = 'block';
         submitBtn.disabled = false;

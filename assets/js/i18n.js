@@ -69,10 +69,19 @@ const TRANSLATIONS = {
     rsvp_dietary:             'Restrições alimentares ou observações',
     rsvp_submit:              'Enviar Confirmação',
     rsvp_success_msg:         'Obrigado pela confirmação! Até ao dia 09 de Agosto! 🥂',
+    rsvp_join_group:          'Junta-te ao nosso grupo WhatsApp',
     rsvp_or_alt:              'ou',
     rsvp_or_contact:          'Prefere confirmar diretamente?',
     rsvp_via_whatsapp:        'Via WhatsApp:',
     rsvp_via_phone:           'Por chamada:',
+
+    contacts_locked_hint:     'Responde à pergunta do convite acima para ver os contactos',
+
+    wa_group_title:           'Grupo WhatsApp',
+    wa_group_subtitle:        'Junta-te ao nosso grupo para receber informações e partilhar fotos no dia!',
+    wa_group_join:            'Aderir ao Grupo',
+    wa_group_show_qr:         'Mostrar QR Code',
+    wa_group_hide_qr:         'Esconder QR Code',
 
     footer_baby:              'e o pequeno Martin 👶',
 
@@ -151,10 +160,19 @@ const TRANSLATIONS = {
     rsvp_dietary:             'Dietary restrictions or notes',
     rsvp_submit:              'Send RSVP',
     rsvp_success_msg:         'Thank you for your RSVP! See you on August 9th! 🥂',
+    rsvp_join_group:          'Join our WhatsApp group',
     rsvp_or_alt:              'or',
     rsvp_or_contact:          'Prefer to confirm directly?',
     rsvp_via_whatsapp:        'Via WhatsApp:',
     rsvp_via_phone:           'By phone:',
+
+    contacts_locked_hint:     'Answer the invitation question above to see the contacts',
+
+    wa_group_title:           'WhatsApp Group',
+    wa_group_subtitle:        'Join our group to receive updates and share photos on the day!',
+    wa_group_join:            'Join Group',
+    wa_group_show_qr:         'Show QR Code',
+    wa_group_hide_qr:         'Hide QR Code',
 
     footer_baby:              'and little Martin 👶',
 
@@ -233,10 +251,19 @@ const TRANSLATIONS = {
     rsvp_dietary:             'Restrictions alimentaires ou remarques',
     rsvp_submit:              'Envoyer la confirmation',
     rsvp_success_msg:         'Merci pour votre confirmation ! À bientôt le 9 août ! 🥂',
+    rsvp_join_group:          'Rejoignez notre groupe WhatsApp',
     rsvp_or_alt:              'ou',
     rsvp_or_contact:          'Vous préférez confirmer directement ?',
     rsvp_via_whatsapp:        'Via WhatsApp :',
     rsvp_via_phone:           'Par téléphone :',
+
+    contacts_locked_hint:     'Répondez à la question de l\'invitation ci-dessus pour voir les contacts',
+
+    wa_group_title:           'Groupe WhatsApp',
+    wa_group_subtitle:        'Rejoignez notre groupe pour recevoir des informations et partager des photos le jour J !',
+    wa_group_join:            'Rejoindre le Groupe',
+    wa_group_show_qr:         'Afficher le QR Code',
+    wa_group_hide_qr:         'Masquer le QR Code',
 
     footer_baby:              'et le petit Martin 👶',
 
