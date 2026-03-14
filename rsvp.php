@@ -10,10 +10,10 @@ header('X-Content-Type-Options: nosniff');
 
 /* ── Configuration ── Edit these values ── */
 define('NOTIFY_EMAIL',  'luis_marinheiro5@hotmail.com');   // <-- change to your email
-define('FROM_EMAIL',    'noreply@bodaLilianaLuis.pt');
-define('FROM_NAME',     'bodaLilianaLuis.pt');
+define('FROM_EMAIL',    'noreply@bodalilianaluis.pt');
+define('FROM_NAME',     'bodalilianaluis.pt');
 define('CSV_FILE',      __DIR__ . '/data/rsvp.csv');
-define('ALLOWED_ORIGIN', 'https://bodaLilianaLuis.pt');
+define('ALLOWED_ORIGIN', 'https://bodalilianaluis.pt');
 /* ────────────────────────────────────────── */
 
 /* ── CORS (same origin only) ── */
