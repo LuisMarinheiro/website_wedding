@@ -535,8 +535,9 @@ h3 { font-family: var(--font-sans); font-weight: 700; }
   right: 0;
   bottom: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 3rem;
   z-index: 10;
   background: rgba(14,165,233,0.25);
   backdrop-filter: blur(2px);

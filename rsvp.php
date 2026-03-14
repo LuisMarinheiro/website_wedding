@@ -98,6 +98,7 @@ $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 @mail(NOTIFY_EMAIL, $subject, $body, $headers);
+@mail('lili_rodiz@hotmail.com', $subject, $body, $headers);
 
 /* ── Also send confirmation to the guest ── */
 $guestSubject = "Confirmação recebida — Casamento Liliana & Luís 💜";
