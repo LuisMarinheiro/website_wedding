@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="page_title">Liliana &amp; Luís — 09.08.2026</title>
+  <meta name="description" content="Casamento de Liliana & Luís — 09 de Agosto de 2026" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ── HEADER / NAV ── -->
+  <header id="site-header">
+    <nav class="nav-container">
+      <a href="#hero" class="nav-logo">L <span class="heart">♥</span> L</a>
+      <ul class="nav-links">
+        <li><a href="#our-story" data-i18n="nav_story">A Nossa História</a></li>
+        <li><a href="#schedule" data-i18n="nav_schedule">Programa</a></li>
+        <li><a href="#locations" data-i18n="nav_locations">Localizações</a></li>
+        <li><a href="#rsvp" data-i18n="nav_rsvp">Confirmação</a></li>
+      </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle" data-i18n="hero_subtitle">Convidamo-vos a celebrar</p>
+      <h1 class="hero-names">Liliana <span class="amp">&amp;</span> Luís</h1>
+      <div class="hero-date">
+        <span class="date-number">09</span>
+        <div class="date-middle">
+          <span data-i18n="hero_month">Agosto</span>
+          <span class="date-year">2026</span>
+        </div>
+      </div>
+      <p class="hero-tagline" data-i18n="hero_tagline">Vão dar o nó!</p>
+
+      <!-- Countdown -->
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span id="cd-days">000</span>
+          <label data-i18n="cd_days">dias</label>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span id="cd-hours">00</span>
+          <label data-i18n="cd_hours">horas</label>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span id="cd-mins">00</span>
+          <label data-i18n="cd_mins">minutos</label>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item">
+          <span id="cd-secs">00</span>
+          <label data-i18n="cd_secs">segundos</label>
+        </div>
+      </div>
+
+      <a href="#rsvp" class="btn btn-primary" data-i18n="hero_cta">Confirmar Presença</a>
+    </div>
+
+    <!-- Car illustration -->
+    <div class="hero-car">
+      <img src="assets/images/car-wedding.png" alt="Wedding car illustration" class="car-img" />
+    </div>
+
+    <div class="scroll-hint">
+      <span>↓</span>
+    </div>
+  </section>
+
+  <!-- ── OUR STORY ── -->
+  <section id="our-story" class="section section-light">
+    <div class="container">
+      <h2 class="section-title" data-i18n="story_title">A Nossa História</h2>
+      <div class="story-grid">
+        <div class="story-card">
+          <div class="story-icon">💍</div>
+          <h3 data-i18n="story_couple_title">Liliana &amp; Luís</h3>
+          <p data-i18n="story_couple_text">Dois corações que se encontraram e decidiram percorrer o caminho da vida juntos. No dia 09 de Agosto de 2026, vão dizer "Sim!" no altar rodeados de quem mais amam.</p>
+        </div>
+        <div class="story-card story-card--highlight">
+          <div class="story-icon">👶</div>
+          <h3 data-i18n="story_martin_title">Olá! Sou o Martin!</h3>
+          <p data-i18n="story_martin_text">Dizem que sou a cara do Papá, mas também tenho outras qualidades da Mamã… mas todos garantem que sou a alegria da família! A minha chegada deu uma ideia brilhante aos meus papás — no mesmo dia em que eles vão dizer "Sim!", eu vou ser batizado!</p>
+        </div>
+        <div class="story-card">
+          <div class="story-icon">🎉</div>
+          <h3 data-i18n="story_celebration_title">Uma celebração dupla</h3>
+          <p data-i18n="story_celebration_text">Casamento e Batizado no mesmo dia. Uma festa cheia de alegria e amor, onde não faltará motivo para sorrir e celebrar esta família que começa a crescer!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SCHEDULE ── -->
+  <section id="schedule" class="section section-purple">
+    <div class="container">
+      <h2 class="section-title section-title--light" data-i18n="schedule_title">Programa do Dia</h2>
+      <p class="section-subtitle section-subtitle--light" data-i18n="schedule_date_label">09 de Agosto de 2026</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">09:30</div>
+          <div class="timeline-dot timeline-dot--breakfast"></div>
+          <div class="timeline-content">
+            <h3 data-i18n="schedule_breakfast_title">Pequeno Almoço</h3>
+            <p data-i18n="schedule_breakfast_text">Pequeno almoço de boas-vindas na Associação Cultural e Recreativa Sicoense</p>
+            <a href="#locations" class="timeline-link" data-i18n="schedule_see_map">Ver localização →</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">11:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 data-i18n="schedule_ceremony_title">Cerimónia</h3>
+            <p data-i18n="schedule_ceremony_text">Casamento &amp; Batizado na Igreja Matriz De Vila Cã</p>
+            <a href="#locations" class="timeline-link" data-i18n="schedule_see_map">Ver localização →</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">~13:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 data-i18n="schedule_reception_title">Receção</h3>
+            <p data-i18n="schedule_reception_text">Receção e cocktail de boas-vindas na Quinta Do Ti Lucas</p>
+            <a href="#locations" class="timeline-link" data-i18n="schedule_see_map">Ver localização →</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">~14:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3 data-i18n="schedule_lunch_title">Almoço de Casamento</h3>
+            <p data-i18n="schedule_lunch_text">Refeição de celebração no Restaurante Quinta Do Ti Lucas, onde não faltará Alegria!</p>
+            <a href="#locations" class="timeline-link" data-i18n="schedule_see_map">Ver localização →</a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">🎂</div>
+          <div class="timeline-dot timeline-dot--cake"></div>
+          <div class="timeline-content">
+            <h3 data-i18n="schedule_party_title">Festa &amp; Animação</h3>
+            <p data-i18n="schedule_party_text">Música, dança e muita celebração para partilhar com a família e amigos!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOCATIONS ── -->
+  <section id="locations" class="section section-light">
+    <div class="container">
+      <h2 class="section-title" data-i18n="locations_title">Localizações</h2>
+
+      <div class="locations-grid">
+        <!-- Breakfast -->
+        <div class="location-card">
+          <div class="location-icon">☕</div>
+          <h3 data-i18n="loc_breakfast_title">Assoc. Cultural e Recreativa Sicoense</h3>
+          <p class="location-type" data-i18n="loc_breakfast_type">Pequeno Almoço — 09h30</p>
+          <p class="location-address">Castelo, Vila Cã, Portugal</p>
+          <div class="location-map-placeholder">
+            <a
+              href="https://maps.app.goo.gl/kTjpM6bNfZF9Xxhc9"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              data-i18n="loc_open_maps"
+            >Abrir no Google Maps</a>
+          </div>
+        </div>
+
+        <!-- Church -->
+        <div class="location-card">
+          <div class="location-icon">⛪</div>
+          <h3 data-i18n="loc_church_title">Igreja Matriz De Vila Cã</h3>
+          <p class="location-type" data-i18n="loc_church_type">Cerimónia — 11h00</p>
+          <p class="location-address">Vila Cã, Portugal</p>
+          <div class="location-map-placeholder">
+            <a
+              href="https://www.google.com/maps/search/Igreja+Matriz+Vila+C%C3%A3+Portugal"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              data-i18n="loc_open_maps"
+            >Abrir no Google Maps</a>
+          </div>
+        </div>
+
+        <!-- Restaurant -->
+        <div class="location-card">
+          <div class="location-icon">🍽️</div>
+          <h3 data-i18n="loc_restaurant_title">Quinta Do Ti Lucas</h3>
+          <p class="location-type" data-i18n="loc_restaurant_type">Festa &amp; Celebração — ~13h00</p>
+          <p class="location-address">Pombal, Portugal</p>
+          <div class="location-map-placeholder">
+            <a
+              href="https://www.google.com/maps/search/Quinta+Do+Ti+Lucas+Portugal"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              data-i18n="loc_open_maps"
+            >Abrir no Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RSVP ── -->
+  <section id="rsvp" class="section section-white">
+    <div class="container">
+      <h2 class="section-title" data-i18n="rsvp_title">Confirmação de Presença</h2>
+      <p class="section-subtitle" data-i18n="rsvp_subtitle">Por favor confirme a sua presença até ao início de Junho de 2026</p>
+
+      <div id="rsvp-success" class="rsvp-success" style="display:none;">
+        <span>🎉</span>
+        <p data-i18n="rsvp_success_msg">Obrigado pela confirmação! Até ao dia 09 de Agosto! 🥂</p>
+      </div>
+
+      <form id="rsvp-form" class="rsvp-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name" data-i18n="rsvp_name">Nome completo *</label>
+            <input type="text" id="name" name="name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="rsvp_email">Email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone" data-i18n="rsvp_phone">Telemóvel</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="guests" data-i18n="rsvp_guests">Nº de convidados *</label>
+            <select id="guests" name="guests" required>
+              <option value="">—</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6+">6+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="rsvp_attending">Confirmação *</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="attending" value="yes" required />
+              <span data-i18n="rsvp_yes">✅ Com certeza que estarei presente!</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="attending" value="no" />
+              <span data-i18n="rsvp_no">😢 Infelizmente não poderei estar presente</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dietary" data-i18n="rsvp_dietary">Restrições alimentares ou observações</label>
+          <textarea id="dietary" name="dietary" rows="3" placeholder="Alergias, vegetariano, etc."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" data-i18n="rsvp_submit">Enviar Confirmação</button>
+        </div>
+      </form>
+
+      <!-- Alternative contact methods -->
+      <div class="rsvp-divider">
+        <span data-i18n="rsvp_or_alt">ou</span>
+      </div>
+
+      <div class="rsvp-contacts">
+        <p data-i18n="rsvp_or_contact">Prefere confirmar diretamente?</p>
+
+        <!-- WhatsApp -->
+        <p class="contacts-label" data-i18n="rsvp_via_whatsapp">Via WhatsApp:</p>
+        <div class="contacts-row">
+          <a
+            href="https://wa.me/351917422003?text=Ol%C3%A1%21+Confirmo+a+minha+presen%C3%A7a+no+casamento+de+Liliana+%26+Lu%C3%ADs+no+dia+09+de+Agosto+de+2026+%F0%9F%8E%89"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-pill contact-pill--wa"
+          >
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Liliana — 917 422 003
+          </a>
+          <a
+            href="https://wa.me/351919778765?text=Ol%C3%A1%21+Confirmo+a+minha+presen%C3%A7a+no+casamento+de+Liliana+%26+Lu%C3%ADs+no+dia+09+de+Agosto+de+2026+%F0%9F%8E%89"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-pill contact-pill--wa"
+          >
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Luís — 919 778 765
+          </a>
+        </div>
+
+        <!-- Phone -->
+        <p class="contacts-label" data-i18n="rsvp_via_phone">Por chamada:</p>
+        <div class="contacts-row">
+          <a href="tel:917422003" class="contact-pill">📱 Liliana — 917 422 003</a>
+          <a href="tel:919778765" class="contact-pill">📱 Luís — 919 778 765</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer id="site-footer">
+    <div class="footer-hearts">♥ ♥ ♥ ♥ ♥</div>
+    <p class="footer-names">Liliana &amp; Luís</p>
+    <p class="footer-date">09 · 08 · 2026</p>
+    <p class="footer-baby" data-i18n="footer_baby">e o pequeno Martin 👶</p>
+    <p class="footer-copy">bodaLilianaLuis.pt</p>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
