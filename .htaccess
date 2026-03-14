@@ -49,6 +49,9 @@ Options -MultiViews
 # Protect CSV data folder
 <IfModule mod_rewrite.c>
     RewriteRule ^data/ - [F,L]
+
+    # Also protect challenge.php from direct browser access (POST only via AJAX)
+    # No action needed — challenge.php already rejects non-POST
 </IfModule>
 
 # ── Compression (Gzip) ──

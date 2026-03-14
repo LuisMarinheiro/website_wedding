@@ -11,6 +11,12 @@ if (empty($_SESSION['challenge_question_id']) || $challengePassed) {
     $_SESSION['challenge_question_id'] = $questionIds[array_rand($questionIds)];
 }
 $currentQuestionId = $_SESSION['challenge_question_id'];
+
+// Generate CSRF token for the RSVP form
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrfToken = $_SESSION['csrf_token'];
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -257,6 +263,12 @@ $currentQuestionId = $_SESSION['challenge_question_id'];
       </div>
 
       <form id="rsvp-form" class="rsvp-form" novalidate>
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>" />
+        <!-- Honeypot — invisible to humans, bots fill it -->
+        <div class="form-group" style="position:absolute;left:-9999px;" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
         <div class="form-row">
           <div class="form-group">
             <label for="name" data-i18n="rsvp_name">Nome completo *</label>

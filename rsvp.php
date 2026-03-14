@@ -5,15 +5,20 @@
    Compatible with OVH shared hosting (PHP 8.x)
    ============================================================ */
 
+session_start();
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 
 /* ── Configuration ── Edit these values ── */
 define('NOTIFY_EMAIL',  'luis_marinheiro5@hotmail.com');   // <-- change to your email
+define('NOTIFY_EMAIL2', 'lili_rodiz@hotmail.com');
 define('FROM_EMAIL',    'noreply@bodalilianaluis.pt');
 define('FROM_NAME',     'bodalilianaluis.pt');
 define('CSV_FILE',      __DIR__ . '/data/rsvp.csv');
 define('ALLOWED_ORIGIN', 'https://bodalilianaluis.pt');
+define('RATE_LIMIT_MAX', 5);           // max submissions per window
+define('RATE_LIMIT_WINDOW', 3600);     // window in seconds (1 hour)
+define('RATE_LIMIT_DIR', __DIR__ . '/data/ratelimit');
 /* ────────────────────────────────────────── */
 
 /* ── CORS (same origin only) ── */
@@ -35,13 +40,63 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+/* ── CSRF token validation ── */
+$csrfToken = $_POST['csrf_token'] ?? '';
+if (empty($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $csrfToken)) {
+    http_response_code(403);
+    echo json_encode(['ok' => false, 'error' => 'invalid_token']);
+    exit;
+}
+
+/* ── Honeypot check — if filled, it's a bot ── */
+if (!empty($_POST['website'])) {
+    // Silently accept to not tip off the bot, but do nothing
+    echo json_encode(['ok' => true]);
+    exit;
+}
+
+/* ── Rate limiting by IP ── */
+$clientIp = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+$rateLimitFile = RATE_LIMIT_DIR . '/' . md5($clientIp) . '.json';
+
+if (!is_dir(RATE_LIMIT_DIR)) {
+    mkdir(RATE_LIMIT_DIR, 0750, true);
+}
+
+$now = time();
+$attempts = [];
+
+if (file_exists($rateLimitFile)) {
+    $data = json_decode(file_get_contents($rateLimitFile), true);
+    if (is_array($data)) {
+        // Keep only attempts within the window
+        $attempts = array_filter($data, fn($ts) => ($now - $ts) < RATE_LIMIT_WINDOW);
+    }
+}
+
+if (count($attempts) >= RATE_LIMIT_MAX) {
+    http_response_code(429);
+    echo json_encode(['ok' => false, 'error' => 'rate_limit']);
+    exit;
+}
+
+$attempts[] = $now;
+file_put_contents($rateLimitFile, json_encode(array_values($attempts)), LOCK_EX);
+
 /* ── Sanitise input ── */
 function clean(string $value, int $maxLen = 255): string {
     return substr(trim(strip_tags($value)), 0, $maxLen);
 }
 
+/**
+ * Remove line breaks from a string to prevent email header injection.
+ */
+function sanitizeHeader(string $value): string {
+    return str_replace(["\r", "\n", "%0a", "%0d"], '', $value);
+}
+
 $name      = clean($_POST['name']      ?? '');
-$email     = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$email     = sanitizeHeader(filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL));
 $phone     = clean($_POST['phone']     ?? '', 30);
 $guests    = clean($_POST['guests']    ?? '');
 $attending = clean($_POST['attending'] ?? '');
@@ -78,6 +133,9 @@ if ($fh) {
     fclose($fh);
 }
 
+/* ── Regenerate CSRF token after successful submission ── */
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
 /* ── Send notification email ── */
 $attendingLabel = $attending === 'yes' ? '✅ PRESENTE' : '❌ NÃO PRESENTE';
 $subject = "RSVP Casamento Liliana & Luís — {$name} ({$attendingLabel})";
@@ -93,12 +151,12 @@ $body = "Nova confirmação recebida:\n\n"
       . "— bodaLilianaLuis.pt";
 
 $headers  = "From: " . FROM_NAME . " <" . FROM_EMAIL . ">\r\n";
-$headers .= "Reply-To: {$email}\r\n";
+$headers .= "Reply-To: " . sanitizeHeader($email) . "\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
 @mail(NOTIFY_EMAIL, $subject, $body, $headers);
-@mail('lili_rodiz@hotmail.com', $subject, $body, $headers);
+@mail(NOTIFY_EMAIL2, $subject, $body, $headers);
 
 /* ── Also send confirmation to the guest ── */
 $guestSubject = "Confirmação recebida — Casamento Liliana & Luís 💜";
