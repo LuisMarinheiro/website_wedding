@@ -75,6 +75,16 @@ const TRANSLATIONS = {
     rsvp_via_phone:           'Por chamada:',
 
     footer_baby:              'e o pequeno Martin 👶',
+
+    unlock_title:             'Acesso Reservado aos Convidados',
+    unlock_subtitle:          'Para ver o programa e as localizações, responde à pergunta do convite.',
+    unlock_placeholder:       'Escreve a resposta...',
+    unlock_submit:            'Desbloquear',
+    unlock_error:             'Resposta incorreta. Tenta novamente!',
+    challenge_q1:             'Qual é a palavra escrita na placa/seta à direita do QR code no convite?',
+    challenge_q2:             'Completa a frase junto ao QR code: "Lê-me para saberes..."',
+    challenge_q3:             'Como é chamado o pai no convite? "A Mamã & o..."',
+    challenge_q4:             'Completa a frase ao lado do carro: "Vão dar o..."',
   },
 
   /* ══════════════════════════════════════════════════════════
@@ -147,6 +157,16 @@ const TRANSLATIONS = {
     rsvp_via_phone:           'By phone:',
 
     footer_baby:              'and little Martin 👶',
+
+    unlock_title:             'Guest-Only Access',
+    unlock_subtitle:          'To see the schedule and locations, answer the question from your invitation.',
+    unlock_placeholder:       'Type your answer...',
+    unlock_submit:            'Unlock',
+    unlock_error:             'Incorrect answer. Try again!',
+    challenge_q1:             'What is the word written on the sign/arrow to the right of the QR code on the invitation?',
+    challenge_q2:             'Complete the phrase next to the QR code: "Lê-me para saberes..."',
+    challenge_q3:             'How is the father called on the invitation? "A Mamã & o..."',
+    challenge_q4:             'Complete the phrase next to the car: "Vão dar o..."',
   },
 
   /* ══════════════════════════════════════════════════════════
@@ -219,6 +239,16 @@ const TRANSLATIONS = {
     rsvp_via_phone:           'Par téléphone :',
 
     footer_baby:              'et le petit Martin 👶',
+
+    unlock_title:             'Accès Réservé aux Invités',
+    unlock_subtitle:          'Pour voir le programme et les lieux, répondez à la question de votre invitation.',
+    unlock_placeholder:       'Écrivez votre réponse...',
+    unlock_submit:            'Débloquer',
+    unlock_error:             'Réponse incorrecte. Réessayez !',
+    challenge_q1:             'Quel est le mot écrit sur le panneau/flèche à droite du QR code sur l\'invitation ?',
+    challenge_q2:             'Complétez la phrase à côté du QR code : « Lê-me para saberes... »',
+    challenge_q3:             'Comment est appelé le père sur l\'invitation ? « A Mamã & o... »',
+    challenge_q4:             'Complétez la phrase à côté de la voiture : « Vão dar o... »',
   },
 };
 
@@ -247,6 +277,12 @@ function applyTranslations(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Placeholder translations
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key] !== undefined) el.placeholder = t[key];
   });
 
   // <html lang>

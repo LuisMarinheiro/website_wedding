@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(php -l /Users/luishenriques/WebstormProjects/web_weedning/index.php && php -l /Users/luishenriques/WebstormProjects/web_weedning/challenge.php && php -l /Users/luishenriques/WebstormProjects/web_weedning/includes/protected-sections.php)",
+      "Bash(php -l /Users/luishenriques/WebstormProjects/web_weedning/index.php)"
     ]
   }
 }
