@@ -1,7 +1,7 @@
 <?php
 /* ============================================================
    rsvp.php — RSVP Form Handler
-   Stores confirmations in a CSV and sends an email notification
+   Sends an email notification with the confirmation details
    Compatible with OVH shared hosting (PHP 8.x)
    ============================================================ */
 
@@ -14,7 +14,6 @@ define('NOTIFY_EMAIL',  'luis_marinheiro5@hotmail.com');   // <-- change to your
 define('NOTIFY_EMAIL2', 'lili_rodiz@hotmail.com');
 define('FROM_EMAIL',    'noreply@bodalilianaluis.pt');
 define('FROM_NAME',     'bodalilianaluis.pt');
-define('CSV_FILE',      __DIR__ . '/data/rsvp.csv');
 define('ALLOWED_ORIGIN', 'https://bodalilianaluis.pt');
 define('RATE_LIMIT_MAX', 5);           // max submissions per window
 define('RATE_LIMIT_WINDOW', 3600);     // window in seconds (1 hour)
@@ -102,6 +101,14 @@ $guests    = clean($_POST['guests']    ?? '');
 $attending = clean($_POST['attending'] ?? '');
 $dietary   = clean($_POST['dietary']   ?? '', 500);
 
+$guestNamesRaw = $_POST['guest_names'] ?? [];
+if (!is_array($guestNamesRaw)) $guestNamesRaw = [];
+$guestNames = [];
+foreach ($guestNamesRaw as $gn) {
+    $cleaned = clean((string) $gn, 100);
+    if ($cleaned !== '') $guestNames[] = $cleaned;
+}
+
 /* ── Validate required fields ── */
 $errors = [];
 if (empty($name))      $errors[] = 'name';
@@ -115,23 +122,7 @@ if (!empty($errors)) {
     exit;
 }
 
-/* ── Save to CSV ── */
-$dataDir = dirname(CSV_FILE);
-if (!is_dir($dataDir)) {
-    mkdir($dataDir, 0750, true);
-}
-
-$isNew    = !file_exists(CSV_FILE);
-$fh       = fopen(CSV_FILE, 'a');
 $datetime = date('Y-m-d H:i:s');
-
-if ($fh) {
-    if ($isNew) {
-        fputcsv($fh, ['datetime', 'name', 'email', 'phone', 'guests', 'attending', 'dietary']);
-    }
-    fputcsv($fh, [$datetime, $name, $email, $phone, $guests, $attending, $dietary]);
-    fclose($fh);
-}
 
 /* ── Regenerate CSRF token after successful submission ── */
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -140,12 +131,21 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 $attendingLabel = $attending === 'yes' ? '✅ PRESENTE' : '❌ NÃO PRESENTE';
 $subject = "RSVP Casamento Liliana & Luís — {$name} ({$attendingLabel})";
 
+$guestNamesBlock = '';
+if (!empty($guestNames)) {
+    $guestNamesBlock = "Outros nomes:\n";
+    foreach ($guestNames as $i => $gn) {
+        $guestNamesBlock .= sprintf("  %d. %s\n", $i + 2, $gn);
+    }
+}
+
 $body = "Nova confirmação recebida:\n\n"
       . "Nome:       {$name}\n"
       . "Email:      {$email}\n"
       . "Telemóvel:  {$phone}\n"
       . "Convidados: {$guests}\n"
       . "Presença:   {$attendingLabel}\n"
+      . $guestNamesBlock
       . "Obs:        {$dietary}\n"
       . "Data/Hora:  {$datetime}\n\n"
       . "— bodaLilianaLuis.pt";

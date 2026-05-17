@@ -164,6 +164,83 @@
   const success = document.getElementById('rsvp-success');
   if (!form) return;
 
+  const guestsSelect   = form.querySelector('#guests');
+  const extraContainer = document.getElementById('extra-guests');
+
+  function getLang() {
+    return localStorage.getItem('wedding_lang') || document.documentElement.lang || 'pt';
+  }
+  function getStrings() {
+    return (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[getLang()]) || {};
+  }
+
+  function renderExtraGuestFields() {
+    if (!guestsSelect || !extraContainer) return;
+    const value = guestsSelect.value;
+    let extra = 0;
+    if (value === '6+') extra = 5;
+    else if (value) extra = Math.max(0, parseInt(value, 10) - 1);
+
+    extraContainer.innerHTML = '';
+    if (extra === 0) return;
+
+    const t = getStrings();
+    const titleEl = document.createElement('p');
+    titleEl.className = 'extra-guests-title';
+    titleEl.setAttribute('data-i18n', 'rsvp_guest_names_title');
+    titleEl.textContent = t.rsvp_guest_names_title || 'Nomes dos outros convidados *';
+    extraContainer.appendChild(titleEl);
+
+    const labelTpl = t.rsvp_guest_name_label || 'Nome do convidado {n}';
+    for (let i = 0; i < extra; i++) {
+      const num = i + 2;
+      const group = document.createElement('div');
+      group.className = 'form-group';
+
+      const label = document.createElement('label');
+      label.dataset.guestNum = num;
+      label.setAttribute('data-i18n-guest-label', '');
+      label.textContent = labelTpl.replace('{n}', num);
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'guest_names[]';
+      input.required = true;
+      input.autocomplete = 'name';
+      input.maxLength = 100;
+
+      group.appendChild(label);
+      group.appendChild(input);
+      extraContainer.appendChild(group);
+    }
+
+    if (value === '6+') {
+      const hint = document.createElement('p');
+      hint.className = 'extra-guests-hint';
+      hint.setAttribute('data-i18n', 'rsvp_guest_names_extra_hint');
+      hint.textContent = t.rsvp_guest_names_extra_hint || 'Para mais de 6 convidados, adicione os nomes restantes em "Observações".';
+      extraContainer.appendChild(hint);
+    }
+
+    form.querySelectorAll('#extra-guests input').forEach(field => {
+      field.addEventListener('input', () => field.classList.remove('invalid'));
+    });
+  }
+
+  function refreshGuestLabels() {
+    if (!extraContainer) return;
+    const t = getStrings();
+    const labelTpl = t.rsvp_guest_name_label || 'Nome do convidado {n}';
+    extraContainer.querySelectorAll('[data-i18n-guest-label]').forEach(label => {
+      label.textContent = labelTpl.replace('{n}', label.dataset.guestNum);
+    });
+  }
+
+  if (guestsSelect) guestsSelect.addEventListener('change', renderExtraGuestFields);
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setTimeout(refreshGuestLabels, 0));
+  });
+
   function validate() {
     let ok = true;
     const required = form.querySelectorAll('[required]');
