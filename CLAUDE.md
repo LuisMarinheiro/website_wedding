@@ -9,7 +9,7 @@ Wedding + baptism website for Liliana & Luís (bodaLilianaLuis.pt). Single-page 
 ## Stack
 
 - **Frontend**: Vanilla HTML/CSS/JS — no build tools, no framework
-- **Backend**: Single PHP endpoint (`rsvp.php`) — saves to CSV + sends email via `mail()`
+- **Backend**: Single PHP endpoint (`rsvp.php`) — sends notification email via `mail()`
 - **i18n**: Three languages (PT default, EN, FR) via `assets/js/i18n.js` using `data-i18n` attributes on HTML elements
 - **Fonts**: Google Fonts — Dancing Script (script), Playfair Display (serif), Lato (sans)
 
@@ -21,7 +21,7 @@ No build step. Open `index.html` in a browser or serve with any local server:
 php -S localhost:8000
 ```
 
-The RSVP form POSTs to `rsvp.php`, so a PHP server is needed to test form submission. RSVP data is saved to `data/rsvp.csv`.
+The RSVP form POSTs to `rsvp.php`, so a PHP server is needed to test form submission. The handler emails the submission to `NOTIFY_EMAIL` / `NOTIFY_EMAIL2` — there is no server-side persistence.
 
 ## Architecture
 
@@ -33,7 +33,7 @@ The RSVP form POSTs to `rsvp.php`, so a PHP server is needed to test form submis
 
 **main.js**: Self-executing IIFEs for each feature — countdown timer, header scroll effect, hamburger menu, active nav highlighting (IntersectionObserver), scroll fade-in animations, RSVP form submission (fetch to `rsvp.php`). On RSVP fetch failure, the form shows success anyway (intentional UX decision).
 
-**RSVP backend** (`rsvp.php`): Validates POST fields, appends to CSV, sends notification email to `NOTIFY_EMAIL` and confirmation email to the guest. Returns JSON `{ok: true/false}`.
+**RSVP backend** (`rsvp.php`): Validates POST fields, sends notification email to `NOTIFY_EMAIL` / `NOTIFY_EMAIL2` and confirmation email to the guest. Returns JSON `{ok: true/false}`. Rate limit state lives under `data/ratelimit/` (the only reason `data/` still exists).
 
 ## Deployment
 

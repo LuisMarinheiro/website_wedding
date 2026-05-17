@@ -250,6 +250,7 @@ $csrfToken = $_SESSION['csrf_token'];
       <div id="rsvp-success" class="rsvp-success" style="display:none;">
         <span>🎉</span>
         <p data-i18n="rsvp_success_msg">Obrigado pela confirmação! Até ao dia 09 de Agosto! 🥂</p>
+<?php if ($challengePassed): ?>
         <div class="rsvp-wa-cta">
           <img src="assets/images/whatsapp-qr.jpg" alt="WhatsApp Group QR Code" class="wa-qr-img" />
           <a
@@ -260,6 +261,7 @@ $csrfToken = $_SESSION['csrf_token'];
             data-i18n="rsvp_join_group"
           >Junta-te ao nosso grupo WhatsApp</a>
         </div>
+<?php endif; ?>
       </div>
 
       <form id="rsvp-form" class="rsvp-form" novalidate>
@@ -298,6 +300,8 @@ $csrfToken = $_SESSION['csrf_token'];
             </select>
           </div>
         </div>
+
+        <div id="extra-guests" class="extra-guests"></div>
 
         <div class="form-group">
           <label data-i18n="rsvp_attending">Confirmação *</label>
@@ -392,6 +396,7 @@ $csrfToken = $_SESSION['csrf_token'];
       <div class="wa-group-icon">💬</div>
       <h2 class="section-title" data-i18n="wa_group_title">Grupo WhatsApp</h2>
       <p class="section-subtitle" data-i18n="wa_group_subtitle">Junta-te ao nosso grupo para receber informações e partilhar fotos no dia!</p>
+<?php if ($challengePassed): ?>
       <div class="wa-qr-wrapper">
         <img src="assets/images/whatsapp-qr.jpg" alt="WhatsApp Group QR Code" class="wa-qr-img" />
       </div>
@@ -402,6 +407,13 @@ $csrfToken = $_SESSION['csrf_token'];
         class="btn btn-wa-join"
         data-i18n="wa_group_join"
       >Aderir ao Grupo</a>
+<?php else: ?>
+      <div class="wa-qr-wrapper">
+        <img src="assets/images/whatsapp-qr.jpg" alt="WhatsApp Group QR Code" class="wa-qr-img wa-qr-img--locked" />
+      </div>
+      <span class="btn btn-wa-join btn-wa-join--locked" data-i18n="wa_group_join">Aderir ao Grupo</span>
+      <p class="contacts-locked-hint" data-i18n="wa_group_locked_hint">Responde à pergunta do convite para aceder ao grupo</p>
+<?php endif; ?>
     </div>
   </section>
 

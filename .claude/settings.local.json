@@ -8,7 +8,10 @@
       "Bash(pip3 install:*)",
       "Bash(python3 -c \"\nimport qrcode\nfrom qrcode.image.styledpil import StyledPilImage\nfrom qrcode.image.styles.moduledrawers import RoundedModuleDrawer\n\nqr = qrcode.QRCode\\(version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=10, border=2\\)\nqr.add_data\\('https://chat.whatsapp.com/K5qZ6rp391mFRiNBuQmMu4?mode=hq1tcli'\\)\nqr.make\\(fit=True\\)\nimg = qr.make_image\\(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer\\(\\), fill_color='#7c3aed', back_color='#ffffff'\\)\nimg.save\\('/Users/luishenriques/WebstormProjects/web_weedning/assets/images/whatsapp-qr.jpg'\\)\nprint\\('done'\\)\n\")",
       "Bash(python3 -c \"\nimport qrcode\n\nqr = qrcode.QRCode\\(version=1, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=10, border=2\\)\nqr.add_data\\('https://chat.whatsapp.com/K5qZ6rp391mFRiNBuQmMu4?mode=hq1tcli'\\)\nqr.make\\(fit=True\\)\nimg = qr.make_image\\(fill_color='#7c3aed', back_color='#ffffff'\\)\nimg.save\\('/Users/luishenriques/WebstormProjects/web_weedning/assets/images/whatsapp-qr.jpg'\\)\nprint\\('done'\\)\n\")",
-      "Bash(php -l /Users/luishenriques/WebstormProjects/web_weedning/rsvp.php && php -l /Users/luishenriques/WebstormProjects/web_weedning/index.php)"
+      "Bash(php -l /Users/luishenriques/WebstormProjects/web_weedning/rsvp.php && php -l /Users/luishenriques/WebstormProjects/web_weedning/index.php)",
+      "Bash(php -S localhost:8000 -t /Users/luishenriques/WebstormProjects/web_weedning)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -s -c cookies.txt http://localhost:8787/ -o page.html)"
     ]
   }
 }

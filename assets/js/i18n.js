@@ -63,6 +63,9 @@ const TRANSLATIONS = {
     rsvp_email:               'Email *',
     rsvp_phone:               'Telemóvel',
     rsvp_guests:              'Nº de convidados *',
+    rsvp_guest_names_title:   'Nomes dos outros convidados *',
+    rsvp_guest_name_label:    'Nome do convidado {n} *',
+    rsvp_guest_names_extra_hint: 'Para mais de 6 convidados, indica os nomes restantes em "Observações".',
     rsvp_attending:           'Confirmação *',
     rsvp_yes:                 '✅ Com certeza que estarei presente!',
     rsvp_no:                  '😢 Infelizmente não poderei estar presente',
@@ -82,6 +85,7 @@ const TRANSLATIONS = {
     wa_group_join:            'Aderir ao Grupo',
     wa_group_show_qr:         'Mostrar QR Code',
     wa_group_hide_qr:         'Esconder QR Code',
+    wa_group_locked_hint:     'Responde à pergunta do convite para aceder ao grupo',
 
     footer_baby:              'e o pequeno Martin 👶',
 
@@ -154,6 +158,9 @@ const TRANSLATIONS = {
     rsvp_email:               'Email *',
     rsvp_phone:               'Phone',
     rsvp_guests:              'Number of guests *',
+    rsvp_guest_names_title:   'Names of the other guests *',
+    rsvp_guest_name_label:    'Guest {n} name *',
+    rsvp_guest_names_extra_hint: 'For more than 6 guests, list the remaining names in "Notes".',
     rsvp_attending:           'Attendance *',
     rsvp_yes:                 '✅ I will definitely be there!',
     rsvp_no:                  '😢 Unfortunately I cannot attend',
@@ -173,6 +180,7 @@ const TRANSLATIONS = {
     wa_group_join:            'Join Group',
     wa_group_show_qr:         'Show QR Code',
     wa_group_hide_qr:         'Hide QR Code',
+    wa_group_locked_hint:     'Answer the invitation question to access the group',
 
     footer_baby:              'and little Martin 👶',
 
@@ -245,6 +253,9 @@ const TRANSLATIONS = {
     rsvp_email:               'Email *',
     rsvp_phone:               'Téléphone',
     rsvp_guests:              'Nombre d\'invités *',
+    rsvp_guest_names_title:   'Noms des autres invités *',
+    rsvp_guest_name_label:    'Nom de l\'invité {n} *',
+    rsvp_guest_names_extra_hint: 'Pour plus de 6 invités, indiquez les noms restants dans « Remarques ».',
     rsvp_attending:           'Présence *',
     rsvp_yes:                 '✅ Je serai certainement présent(e) !',
     rsvp_no:                  '😢 Je ne pourrai malheureusement pas être présent(e)',
@@ -264,6 +275,7 @@ const TRANSLATIONS = {
     wa_group_join:            'Rejoindre le Groupe',
     wa_group_show_qr:         'Afficher le QR Code',
     wa_group_hide_qr:         'Masquer le QR Code',
+    wa_group_locked_hint:     'Répondez à la question de l\'invitation pour accéder au groupe',
 
     footer_baby:              'et le petit Martin 👶',
 
